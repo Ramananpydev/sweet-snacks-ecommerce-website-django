@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="{% static 'css/singin.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+ <aside>
+    <blockquote>
+      “Good sweet is the foundation of genuine happiness.”
+    </blockquote>
+  </aside>
+  <main>
+        <form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Sign In</button>
+
+  <p style="color:red">{{ msg }}</p>
+
+
+  <p>Don’t have an account? <a href="{% url 'onlineproduce:signup' %}">Register Now</a></p>
+  
+  <p>Or continue with</p>
+  <section>
+    <a href="https://www.facebook.com/login/" target="_blank"><i ><img src="{% static 'images/Facebook2.png' %}" alt="oops!"></i></a>
+    <a href="https://accounts.google.com/signin" target="_blank"><i ><img src="{% static 'images/google.png' %}" alt="oops!"></i></a>
+    <a href="https://www.instagram.com/accounts/login/" target="_blank" ><i ><img src="{% static 'images/Instagram.png' %}" alt="oops!"></i></a>
+  </section>
+</form>
+    <!-- <form method="post" >
+            {% csrf_token %}
+            {{ form.as_p }}
+      <h2><i class="fa-solid fa-user"></i> Sign In</h2>
+
+      <label>Email</label>
+      <input type="email"  name="email" value="" placeholder="Enter your email" required >
+
+      <label>Password</label>
+      <input type="password"  name="password"  value="" placeholder="Enter your password" required>
+
+    </form> -->
+  </main>
+</body>
+</html>

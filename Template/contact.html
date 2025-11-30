@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact — Sweet Savory</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"crossorigin="anonymous"referrerpolicy="no-referrer"/>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+  </head>
+  <body>
+    <header class="bg">
+      <div class="container">
+        <a href="http://" class="logo">
+          <i
+            class="fa-solid fa-cookie-bite logo-icon"
+            style="font-size: 40px"
+          ></i>
+          <div class="logo-text">Sweet <span>Savory</span></div>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="{% url 'onlineproduce:home1' %}">Home</a></li>
+            <li><a href="{% url 'onlineproduce:product' %}">Product</a></li>
+            <li>
+              <a href="{% url 'onlineproduce:contact' %}" class="active"
+                >Contact</a
+              >
+            </li>
+            <li><a href="{% url 'onlineproduce:about' %}">AboutUs</a></li>
+          </ul>
+        </nav>
+        <div class="nav">
+          {% if request.session.user_id %}
+          <div class="profile-dropdown">
+            <input type="checkbox" id="toggle-profile" />
+            <label for="toggle-profile" class="profile-label">
+              <i class="fa-solid fa-user-circle"></i>
+            </label>
+
+            <div class="dropdown-box">
+              <p class="user">Hello ! {{ request.session.user_name }}</p>
+              <a href="{% url 'onlineproduce:logout' %}">Logout</a>
+            </div>
+          </div>
+
+          {% else %}
+          <a href="{% url 'onlineproduce:signin' %}" class="btn btn-second"
+            >Sign In</a
+          >
+          {% endif %}
+
+          <a
+            href="https://wa.me/919384415892?text=Hello!%20I%20want%20to%20place%20an%20order."
+            target="_blank"
+            class="btn btn-first"
+          >
+            <i
+              class="fa-solid fa-cart-shopping"
+              style="color: rgb(225, 230, 230)"
+            ></i>
+            Order Online
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- Hero -->
+      <section class="hero wrap">
+        <h1>Contact Us</h1>
+        <p>
+          We’d love to hear from you! Reach out for orders, wholesale queries,
+          or just to say hello.
+        </p>
+      </section>
+
+      <!-- Contact Info -->
+      <section class="wrap contact-info">
+        <div class="info-box">
+          <a href="https://maps.app.goo.gl/nDGP4pEGC9Whb8YdA">
+            <i class="fa-solid fa-location-dot"></i
+          ></a>
+          <h3>Visit Us</h3>
+          <p>
+            33A Manickavasagar Street<br />Aarumuganagar, Kalugumalai-628552
+          </p>
+        </div>
+        <div class="info-box">
+          <a href="tel:9384415892"><i class="fa-solid fa-phone"></i></a>
+          <h3>Call Us</h3>
+          <p>+93844 15892<br />Mon–Sat: 8am – 10pm</p>
+        </div>
+        <div class="info-box">
+          <a href="mailto:ramananramanan2435@gmail.com"
+            ><i class="fa-solid fa-envelope"></i
+          ></a>
+
+          <h3>Email Us</h3>
+          <p>sathyasaishop@gmail.com</p>
+        </div>
+      </section>
+
+      <!-- Contact Form -->
+      <div class="map">
+        <section class="form-section">
+          <h2>Send a Message</h2>
+
+          {% if success %}
+          <script>
+            alert("✅ Email sent successfully!");
+          </script>
+
+          {% endif %}
+
+          <form
+            class="contact-form"
+            method="post"
+            action="{% url 'onlineproduce:enquiry' %}"
+          >
+            {% csrf_token %} {{ gmail.as_p }}
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="Phone">Phone number</label>
+              <input type="phone" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="feedback">Feedback</label>
+              <textarea
+                id="message"
+                name="feedback"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="send-btn">Send Message</button>
+          </form>
+          <figure>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1648.9434844850439!2d77.7006944!3d9.1544444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zOcKwMDknMTYuMCJOIDc3wrA0MicwMi41IkU!5e1!3m2!1sen!2sin!4v1759730683626!5m2!1sen!2sin"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </figure>
+        </section>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <!--  About -->
+      <div class="foot-col">
+        <div class="head"><h3>About</h3></div>
+        <section class="paragraph">
+          They can seamlessly transition from the savoury side of the kitchen to
+          the sweet, lending their unique properties to a wide range of
+          delectable dishes.
+        </section>
+        <div class="icon">
+          <a
+            href="https://www.facebook.com/profile.php?id=100027007660946&mibextid=ZbWKwL"
+            target="_blank"
+            ><img
+              src="{% static 'images/Facebook2.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://www.instagram.com/neyssi_dhoni1312?igsh=YWFheGs0a25yMmU2"
+            target="_blank"
+            ><img
+              src="{% static 'images/Instagram1.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a href="https://wa.me/9384415892"
+            ><img
+              src="{% static 'images/whatsapp.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://x.com/Ramanan82518505?t=shLAAClFDMCoiXHXh0rsjA&s=09"
+            target="_blank"
+            ><img
+              src="{% static 'images/twitter.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+        </div>
+      </div>
+
+      <!--Our Blends -->
+      <div class="foot-col">
+        <div class="head_fst"><h3>Our Blends</h3></div>
+        <div id="menu">
+          <ul>
+            <li>Aathirasam</li>
+            <li>Special Sesame Aathirasam</li>
+            <li>Mullu Murukku</li>
+            <li>Hand-woven Murukku</li>
+            <li>Butter Murukku</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="foot-col">
+        <div class="h_sec"><h3>Contact Us</h3></div>
+        <div class="contact">
+          33A Manickavasagar Street <br />
+          Aarumuganagar, Kalugumalai-628552 <br />
+          +93844 15892 <br />
+          sathyashop@gmail.com <br />
+          Mon-Sat: 8am - 10pm
+        </div>
+        <div class="all_ic">
+          <i class="fa-solid fa-location-dot"></i>
+          <i class="one fa-solid fa-phone"></i>
+          <i class="one fa-solid fa-envelope"></i>
+          <i class="one fa-solid fa-clock"></i>
+        </div>
+        <div class="copyright">
+          <small
+            >© <span id="year"></span>2001 Sweet Savory — All rights
+            reserved</small
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,270 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>product</title>
+    <link rel="stylesheet" href="{% static 'css/produc.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  </head>
+  <body>
+    <header class="bg">
+      <div class="container">
+        <a href="http://" class="logo">
+          <i
+            class="fa-solid fa-cookie-bite logo-icon"
+            style="font-size: 40px"
+          ></i>
+          <div class="logo-text">Sweet <span>Savory</span></div>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="{% url 'onlineproduce:home1' %}">Home</a></li>
+            <li>
+              <a href="{% url 'onlineproduce:product' %}" class="active"
+                >Product</a
+              >
+            </li>
+            <li><a href="{% url 'onlineproduce:contact' %}">Contact</a></li>
+            <li><a href="{% url 'onlineproduce:about' %}">AboutUs</a></li>
+          </ul>
+        </nav>
+        <div class="nav">
+          {% if request.session.user_id %}
+          <div class="profile-dropdown">
+            <input type="checkbox" id="toggle-profile" />
+            <label for="toggle-profile" class="profile-label">
+              <i class="fa-solid fa-user-circle"></i>
+            </label>
+
+            <div class="dropdown-box">
+              <p class="user">Hello ! {{ request.session.user_name }}</p>
+              <a href="{% url 'onlineproduce:logout' %}">Logout</a>
+            </div>
+          </div>
+
+          {% else %}
+          <a href="{% url 'onlineproduce:signin' %}" class="btn btn-second"
+            >Sign In</a
+          >
+          {% endif %}
+
+          <a
+            href="https://wa.me/919384415892?text=Hello!%20I%20want%20to%20place%20an%20order."
+            target="_blank"
+            class="btn btn-first"
+          >
+            <i
+              class="fa-solid fa-cart-shopping"
+              style="color: rgb(225, 230, 230)"
+            ></i>
+            Order Online
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="pro1"><ins>Signature Blends</ins></div>
+      <span class="pro2"> Delight in Every Bite</span>
+    </main>
+    <figure>
+      <main>
+        <div class="products">
+          <div class="card">
+            <img src="{% static 'images/adhi.JPG' %}" alt="Adhirasam" />
+            <h3>Traditional South Indian sweet</h3>
+            <p>
+              It's a deep-fried, crispy disc-shaped treat with cardamom flavor.
+              Popular festive sweet. <br />quantity : 10 pieces
+            </p>
+            <div class="price-rating">
+              <span>₹30.00</span>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <a href="{% url 'onlineproduce:order' %}">
+              <img
+                src="{% static 'images/adhi2.webp' %}"
+                alt="Sesame Adhirasam"
+              />
+              <h3>Cultural significance Special Sesame</h3>
+              <p>
+                Adhirasam is a festive sweet during Diwali, symbol of good luck
+                & prosperity. <br />quantity : 10 pieces
+              </p>
+              <div class="price-rating">
+                <span>₹40.00</span>
+                <div class="stars">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <img src="{% static 'images/kaimu.jpg' %}" alt="Murukku" />
+            <h3>Mullu Murukku</h3>
+            <p>
+              Made from rice dough, deep fried. Manapparai is famous for this
+              snack. <br />quantity : 12 pieces
+            </p>
+            <div class="price-rating">
+              <span>₹20.00</span>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="{% static 'images/hand.webp' %}" alt="Hand Murukku" />
+            <h3>Hand-woven Murukku</h3>
+            <p>
+              Famous Marapparai Kai Murukku is hand-made with stiffer dough.
+              <br />quantity : 12 pieces
+            </p>
+            <div class="price-rating">
+              <span>₹20.00</span>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-regular fa-star"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="{% static 'images/butter.jpg' %}" alt="Butter Murukku" />
+            <h3>Special Butter Murukku</h3>
+            <p>
+              Crispy, twisted shape, savory buttery flavor. South Indian
+              special. <br />quantity : 100 grams
+            </p>
+            <div class="price-rating">
+              <span>₹70.00</span>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </figure>
+    <footer>
+      <!-- Column 1: About -->
+      <div class="foot-col">
+        <div class="head"><h3>About</h3></div>
+        <section class="paragraph">
+          They can seamlessly transition from the savoury side of the kitchen to
+          the sweet, lending their unique properties to a wide range of
+          delectable dishes.
+        </section>
+        <div class="icon">
+          <a
+            href="https://www.facebook.com/profile.php?id=100027007660946&mibextid=ZbWKwL"
+            target="_blank"
+            ><img
+              src="{% static 'images/Facebook2.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://www.instagram.com/neyssi_dhoni1312?igsh=YWFheGs0a25yMmU2"
+            target="_blank"
+            ><img
+              src="{% static 'images/Instagram1.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a href="https://wa.me/9384415892" target="_blank"
+            ><img
+              src="{% static 'images/whatsapp.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://x.com/Ramanan82518505?t=shLAAClFDMCoiXHXh0rsjA&s=09"
+            target="_blank"
+            ><img
+              src="{% static 'images/twitter.png' %}"
+              alt="oops!"
+              style="width: 35px"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Our Blends -->
+      <div class="foot-col">
+        <div class="head_fst"><h3>Our Blends</h3></div>
+        <div id="menu">
+          <ul>
+            <li>Aathirasam</li>
+            <li>Special Sesame Aathirasam</li>
+            <li>Mullu Murukku</li>
+            <li>Hand-woven Murukku</li>
+            <li>Butter Murukku</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Column 3: Contact Us -->
+      <div class="foot-col">
+        <div class="h_sec"><h3>Contact Us</h3></div>
+        <div class="contact">
+          33A Manickavasagar Street <br />
+          Aarumuganagar, Kalugumalai-628552 <br />
+          +93844 15892 <br />
+          sathyashop@gmail.com <br />
+          Mon-Sat: 8am - 10pm
+        </div>
+        <div class="all_ic">
+          <i class="fa-solid fa-location-dot"></i>
+          <i class="one fa-solid fa-phone"></i>
+          <i class="one fa-solid fa-envelope"></i>
+          <i class="one fa-solid fa-clock"></i>
+        </div>
+        <div class="copyright">
+          <small
+            >© <span id="year"></span>2001 Sweet Savory — All rights
+            reserved</small
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

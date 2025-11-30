@@ -1,0 +1,332 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sathya sweet & savory</title>
+    <link rel="stylesheet" href="{% static 'css/home1.css' %}" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  </head>
+
+  <body>
+    <header class="bg">
+      <div class="container">
+        <a href="http://" class="logo">
+          <i
+            class="fa-solid fa-cookie-bite logo-icon"
+            style="font-size: 40px"
+          ></i>
+          <div class="logo-text">Sweet <span>Savory</span></div>
+        </a>
+        <nav>
+          <ul>
+            <li>
+              <a href="{% url 'onlineproduce:home' %}" class="active">Home</a>
+            </li>
+            <li><a href="{% url 'onlineproduce:product' %}">Product</a></li>
+            <li><a href="{% url 'onlineproduce:contact' %}">Contact</a></li>
+            <li><a href="{% url 'onlineproduce:about' %}">AboutUs</a></li>
+          </ul>
+        </nav>
+        <div class="nav">
+          {% if request.session.user_id %}
+          <div class="profile-dropdown">
+            <input type="checkbox" id="toggle-profile" />
+            <label for="toggle-profile" class="profile-label">
+              <i class="fa-solid fa-user-circle"></i>
+            </label>
+
+            <div class="dropdown-box">
+              <p class="user">Hello ! {{ request.session.user_name }}</p>
+              <a href="{% url 'onlineproduce:logout' %}">Logout</a>
+            </div>
+          </div>
+
+          {% else %}
+          <a href="{% url 'onlineproduce:signin' %}" class="btn btn-second1"
+            >Sign In</a
+          >
+          {% endif %}
+
+          <a
+            href="https://wa.me/919384415892?text=Hello!%20I%20want%20to%20place%20an%20order."
+            target="_blank"
+            class="btn btn-first"
+          >
+            <i
+              class="fa-solid fa-cart-shopping"
+              style="color: rgb(225, 230, 230)"
+            ></i>
+            Order Online
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <figure>
+        <div class="color">
+          <div class="wrap-all">
+            <div class="quotes">Sweet Savory</div>
+            <div class="text">Ethically Sourced Rice</div>
+            <span class="first">
+              <p>
+                Sweet flavors are typically associated with sugars, honey, or
+                fruits, while <br />savory flavors are associated with salt,
+                spices.The interplay of these con- <br />trasting tastes can be
+                found in a wide range of cuisines and dishes, from
+                <br />appetizers to desserts.
+              </p>
+            </span>
+
+            <div class="explore">
+              <a
+                href="https://maps.app.goo.gl/nDGP4pEGC9Whb8YdA"
+                class="btn btn-second"
+                >Visit Our Shop</a
+              >
+              <a href="{% url 'onlineproduce:product' %}" class="btn btn-first"
+                >Explore Our Blends</a
+              >
+            </div>
+            <div class="company-logo">
+              <img src="{% static 'images/logo.png' %}" alt="oops!" />
+            </div>
+          </div>
+        </div>
+      </figure>
+    </section>
+
+    <div class="all" data-aos="fade-up" data-aos-duration="1200">
+      <div class="ourfeatures">
+        <h2>Our <span>services</span></h2>
+      </div>
+      <div class="group">
+        <div class="card_one">
+          <img src="{% static 'images/adhi murukku.jpg' %}" alt="oops!" />
+          <h2 id="con">Sweet Savory Variety</h2>
+          <p>
+            We sell various type of Sweet and Savory ranging from top cottage
+            industry
+          </p>
+        </div>
+
+        <div class="card_one">
+          <img src="{% static 'images/own making.jpg' %}" alt="oops!" />
+          <h2 id="cons">Own Making</h2>
+          <p>
+            We make Adhirasam and Murukku using traditional hot techniques for
+            authentic taste
+          </p>
+        </div>
+
+        <div class="card_one">
+          <img src="{% static 'images/wholesale.jpg' %}" alt="oops!" />
+          <h2 id="con">Wholesale & Retail</h2>
+          <p>
+            Supplying to individual customers, shops and supermarkets with best
+            quality
+          </p>
+        </div>
+      </div>
+
+      <div class="last">
+        <div class="card_two">
+          <img src="{% static 'images/seasonal.webp' %}" alt="oops!" />
+          <h2 id="con">Seasonal Special</h2>
+          <p>
+            Enjoy exclusive festive delights — from Diwali sweets to Pongal
+            specialties, crafted only for the season
+          </p>
+        </div>
+
+        <div class="card_two">
+          <img src="{% static 'images/Expedite shipping.jpg' %}" alt="oops!" />
+          <h2 id="cons">Express Delivery</h2>
+          <p>Fast delivery service across the US, available year-round, 24/7</p>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="test" data-aos="fade-up" data-aos-duration="1200">
+        <h1>Testimonials</h1>
+        <h2>What Our customer Says</h2>
+      </div>
+      <div class="review">
+        <div class="customersay" data-aos="fade-up" data-aos-duration="1200">
+          <i class="fas fa-quote-left quote"></i>
+          <p>
+            I grew up eating my grandmother’s athirasam, and tasting this
+            instantly took me back to those days. Soft in the middle, perfectly
+            crisp on the edges, and full of that authentic jaggery flavor — just
+            like it’s meant to be. You can tell it’s made with care and
+            tradition. It feels homemade, not factory-made, and that makes all
+            the difference.
+          </p>
+          <img
+            src="{% static 'images/preethi.jpg' %}"
+            alt="oops!"
+            class="avatar"
+          />
+          <h5>preethi</h5>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="customersay" data-aos="fade-up" data-aos-duration="1200">
+          <i class="fas fa-quote-left quote"></i>
+          <p>
+            When it comes to traditional snacks, these are my top picks —
+            athirasam and murukku. The athirasam is soft in the middle with that
+            rich jaggery sweetness, while the murukku is perfectly crunchy and
+            light, without feeling oily. I shared both with my family and
+            everyone loved them. Truly authentic taste you can trust every time.
+          </p>
+          <img
+            src="{% static  'images/saam.jpg' %}"
+            alt="oops!"
+            class="avatar"
+          />
+          <h5>Saam</h5>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="customersay" data-aos="fade-up" data-aos-duration="1200">
+          <i class="fas fa-quote-left quote"></i>
+          <p>
+            The seasonal athirasam with cardamom and ginger is something
+            special. The gentle spice from ginger blends beautifully with the
+            sweet jaggery, and the cardamom gives a refreshing aroma in every
+            bite. It’s not just a sweet — it feels festive, warm, and unique. A
+            perfect treat for the season that stands out from the usual.
+          </p>
+
+          <img
+            src="{% static 'images/suriya.webp' %}"
+            alt="oops!"
+            class="avatar"
+          />
+          <h5>Ramanan</h5>
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+      <script>
+        AOS.init();
+      </script>
+    </aside>
+
+    <footer>
+      <!--  About -->
+      <div class="foot-col">
+        <div class="head"><h3>About</h3></div>
+        <section class="paragraph">
+          They can seamlessly transition from the savoury side of the kitchen to
+          the sweet, lending their unique properties to a wide range of
+          delectable dishes.
+        </section>
+        <div class="icon">
+          <a
+            href="https://www.facebook.com/profile.php?id=100027007660946&mibextid=ZbWKwL"
+            target="_blank"
+            ><img
+              src="{% static 'images/Facebook2.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://www.instagram.com/neyssi_dhoni1312?igsh=YWFheGs0a25yMmU2"
+            target="_blank"
+            ><img
+              src="{% static 'images/Instagram1.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a href="https://wa.me/9384415892" target="_blank"
+            ><img
+              src="{% static 'images/whatsapp.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://x.com/Ramanan82518505?t=shLAAClFDMCoiXHXh0rsjA&s=09"
+            target="_blank"
+            ><img
+              src="{% static 'images/twitter.png' %}"
+              alt="oops!"
+              style="width: 35px"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!--Our Blends -->
+      <div class="foot-col">
+        <div class="head_fst"><h3>Our Blends</h3></div>
+        <div id="menu">
+          <ul>
+            <li>Aathirasam</li>
+            <li>Special Sesame Aathirasam</li>
+            <li>Mullu Murukku</li>
+            <li>Hand-woven Murukku</li>
+            <li>Butter Murukku</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="foot-col">
+        <div class="h_sec"><h3>Contact Us</h3></div>
+        <div class="contact">
+          <a href="http://maps.app.goo.gl/nDGP4pEGC9Whb8YdA"
+            >33A Manickavasagar Street <br />
+            Aarumuganagar, Kalugumalai-628552 <br
+          /></a>
+          <a href="tel:9384415892">9384415892 <br /></a>
+          <a href="mailto:">sathyashop@gmail.com <br /></a>
+          Mon-Sat: 8am - 10pm
+        </div>
+        <div class="all_ic">
+          <i class="fa-solid fa-location-dot"></i>
+          <i class="one fa-solid fa-phone"></i>
+          <i class="one fa-solid fa-envelope"></i>
+          <i class="one fa-solid fa-clock"></i>
+        </div>
+        <div class="copyright">
+          <small
+            >© <span id="year"></span>2001 Sweet Savory — All rights
+            reserved</small
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

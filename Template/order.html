@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Online - Sweet & Savory</title>
+  <link rel="stylesheet" href="{% static 'css/orde.css' %}" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+  <script src="{% static 'js/event.js' %}" defer></script>
+</head>
+
+<body>
+  <section class="order-banner">
+    <h1>Order Your Favorites Online</h1>
+    <p>Freshly prepared. Delivered with care.</p>
+  </section>
+
+  <div class="order-page">
+
+    <section class="order-section">
+      <div class="order-card">
+        <img src="{% static 'images/adhi2.webp' %}" alt="Sesame Adhirasam">
+        <h3>Sesame Adhirasam</h3>
+        <p>Special sesame flavor for a rich, nutty experience.</p><br>
+        <span>₹</span>
+        <span id="price">40</span>
+
+        <!-- Quantity Section -->
+        <form class="order-form">
+          <label>Quantity:</label>
+          <button type="button" onclick="decrease()">−</button>
+          <input type="text" id="qty" value="1" readonly>
+          <button type="button" onclick="increase()">+</button>
+        </form>
+
+        <!-- Rating Section -->
+        <!-- <div class="rating">
+          <input type="radio" id="star5" name="rating1" value="5" />
+          <label for="star5">★</label>
+
+          <input type="radio" id="star4" name="rating1" value="4" />
+          <label for="star4">★</label>
+
+          <input type="radio" id="star3" name="rating1" value="3" />
+          <label for="star3">★</label>
+
+          <input type="radio" id="star2" name="rating1" value="2" />
+          <label for="star2">★</label>
+
+          <input type="radio" id="star1" name="rating1" value="1" />
+          <label for="star1">★</label>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- Checkout form -->
+    <section class="checkout-section">
+      <h2>Shipping Details</h2>
+      <form class="checkout-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required />
+
+        <label for="phone">Mobile Number:</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number"
+         pattern="\d{10}" maxlength="10" title="Please enter exactly 10 digits" required />
+
+        <label for="address">Address:</label>
+        <textarea id="address" placeholder="Enter your full address" required></textarea>
+
+        <h3>Payment Method</h3>
+        <div class="payment-options">
+          <label><input type="radio" name="payment" value="cod" checked > Cash on Delivery</label>
+          <label><input type="radio" name="payment" value="card" > Credit / Debit Card</label>
+          <label><input type="radio" name="payment" value="gpay"> Google Pay</label>
+          <label><input type="radio" name="payment" value="phonepe"> PhonePe</label>
+        </div>`
+
+
+<!--         
+<div id="card-details" class="card-details" style="display: none;">
+  <label for="cardNumber">Card Number:</label>
+  <input type="text" id="cardNumber" maxlength="16" placeholder="Enter 16-digit card number">
+
+  <label for="expiry">Expiry Date:</label>
+  <input type="date" id="expiry">
+
+  <label for="cvv">CVV:</label>
+  <input type="password" id="cvv" maxlength="3" placeholder="123" required>
+</div> -->
+
+
+        <div class="checkout-buttons">
+
+
+        <a href="{% url 'onlineproduce:success' %}"><button type="submit" class="btn confirm">Conform Order</button></a>
+
+        <a href="{% url 'onlineproduce:product' %}"><button type="button" class="btn cancel">Cancel Order</button></a>
+        </div>
+
+        
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2001 Sweet Savory — All rights reserved</p>
+  </footer>
+
+<script>
+     let quantity = 1;
+
+    function increase() {
+      quantity++;
+
+      document.getElementById('qty').value = quantity;
+      document.getElementById('price').innerHTML = quantity * 40;
+      
+    }
+
+    function decrease() {
+      if (quantity > 1) {
+        quantity--;
+        document.getElementById('qty').value = quantity;
+        document.getElementById('price').innerHTML = quantity * 40;
+      }
+    }
+
+    
+
+    document.querySelector(".checkout-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      window.location.href = "{% url 'onlineproduce:success' %}";
+    });
+
+
+
+
+
+</script>
+</body>
+</html>

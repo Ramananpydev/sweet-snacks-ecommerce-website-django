@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>About — Sweet Savory</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="crossorigin="anonymous"referrerpolicy="no-referrer"/>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet"href="https://unpkg.com/aos@2.3.1/dist/aos.css ?"/>
+
+    <link rel="stylesheet" href="{% static 'css/abouts.css' %}" />
+  </head>
+  <body>
+    <header class="bg">
+      <div class="container">
+        <a href="http://" class="logo">
+          <i
+            class="fa-solid fa-cookie-bite logo-icon"
+            style="font-size: 40px"
+          ></i>
+          <div class="logo-text">Sweet <span>Savory</span></div>
+        </a>
+        <nav>
+          <ul>
+            <li><a href="{% url 'onlineproduce:home1' %}">Home</a></li>
+            <li><a href="{% url 'onlineproduce:product' %}">Product</a></li>
+            <li><a href="{% url 'onlineproduce:contact' %}">Contact</a></li>
+            <li>
+              <a href="{% url 'onlineproduce:about' %}" class="active"
+                >AboutUs</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="nav">
+          {% if request.session.user_id %}
+          <div class="profile-dropdown">
+            <input type="checkbox" id="toggle-profile" />
+            <label for="toggle-profile" class="profile-label">
+              <i class="fa-solid fa-user-circle"></i>
+            </label>
+
+            <div class="dropdown-box">
+              <p class="user">Hello ! {{ request.session.user_name }}</p>
+              <a href="{% url 'onlineproduce:logout' %}">Logout</a>
+            </div>
+          </div>
+
+          {% else %}
+          <a href="{% url 'onlineproduce:signin' %}" class="btn btn-second"
+            >Sign In</a
+          >
+          {% endif %}
+          <a
+            href="https://wa.me/919384415892?text=Hello!%20I%20want%20to%20place%20an%20order."
+            target="_blank"
+            class="btn btn-first"
+          >
+            <i
+              class="fa-solid fa-cart-shopping"
+              style="color: rgb(225, 230, 230)"
+            ></i>
+            Order Online
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero wrap" data-aos="fade-up" data-aos-duration="1200">
+        <div class="hero-media">
+          <img src="{% static 'images/adhi.JPG' %}" alt="Adhirasam" />
+        </div>
+
+        <div class="hero-content">
+          <h1>About Our Cottage Murukku & Athirasam Industry</h1>
+          <p class="lead">
+            We are a small cottage industry specializing in traditional South
+            Indian snacks — handcrafted Murukku, authentic Athirasam and
+            seasonal sweets made with love and time-tested recipes.
+          </p>
+          <p>
+            Our mission is to keep traditional flavours alive using quality
+            ingredients, small-batch production, and a focus on freshness. We
+            supply both retail customers and wholesale partners across the
+            region.
+          </p>
+          <a class="button" href="{% url 'onlineproduce:product' %}"
+            >View Products</a
+          >
+        </div>
+      </section>
+
+      <!-- Story / Mission -->
+      <section
+        class="wrap two-col story"
+        data-aos="fade-up"
+        data-aos-duration="1200"
+      >
+        <div>
+          <h2>Our Story</h2>
+          <p>
+            Honed through learning a trade in Chennai, our journey has been
+            built on hard work and dedication. After mastering the trade and
+            returning to our hometown, <br />we together with our family,
+            established a small cottage industry—always deeply rooted in family
+            values. For 35 years, we have proudly carried forward this
+            tradition, ensuring that every step reflects both heritage and
+            quality
+          </p>
+        </div>
+
+        <div>
+          <h2>Our Mission</h2>
+          <ul class="mission-list">
+            <li>Preserve traditional recipes & artisanal techniques.</li>
+            <li>Use quality ingredients sourced locally where possible.</li>
+            <li>
+              Deliver consistent taste for retail and wholesale customers.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Products preview -->
+      <section class="wrap gallery" data-aos="fade-up" data-aos-duration="1200">
+        <h2>Handmade Favorites</h2>
+        <div class="images">
+          <figure>
+            <img src="{% static 'images/adhi2.webp' %}" alt="Athirasam" />
+            <figcaption>Athirasam</figcaption>
+          </figure>
+          <figure>
+            <img src="{% static 'images/kaimu.jpg' %}" alt="Murukku" />
+            <figcaption>Hand-woven Murukku</figcaption>
+          </figure>
+          <figure>
+            <img src="{% static 'images/butter.jpg' %}"" alt="Butter Murukku" />
+            <figcaption>Butter Murukku</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Contact quick -->
+      <section
+        class="values-contact"
+        data-aos="fade-up"
+        data-aos-duration="1200"
+      >
+        <div class="values">
+          <h3>What We Value</h3>
+          <p>Craftsmanship • Clean Ingredients • Community • Tradition</p>
+        </div>
+
+        <aside class="quick-contact">
+          <h3>Get in Touch</h3>
+          <p>
+            33A Manickavasagar Street<br />Aarumuganagar, Kalugumalai-628552
+          </p>
+          <p>Phone: +58585 92922<br />Email: sathyashop@gmail.com</p>
+          <a class="btn-outline" href="{% url 'onlineproduce:contact' %}"
+            >Contact Us</a
+          >
+        </aside>
+      </section>
+    </main>
+
+    <footer>
+      <!--  About -->
+      <div class="foot-col">
+        <div class="head"><h3>About</h3></div>
+        <section class="paragraph">
+          They can seamlessly transition from the savoury side of the kitchen to
+          the sweet, lending their unique properties to a wide range of
+          delectable dishes.
+        </section>
+        <div class="icon">
+          <a
+            href="https://www.facebook.com/profile.php?id=100027007660946&mibextid=ZbWKwL"
+            target="_blank"
+            ><img
+              src="{% static 'images/Facebook2.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://www.instagram.com/neyssi_dhoni1312?igsh=YWFheGs0a25yMmU2"
+            target="_blank"
+            ><img
+              src="{% static 'images/Instagram1.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a href="https://wa.me/9384415892" target="_blank"
+            ><img
+              src="{% static 'images/whatsapp.png' %}"
+              alt="oops!"
+              style="width: 35px"
+          /></a>
+          <a
+            href="https://x.com/Ramanan82518505?t=shLAAClFDMCoiXHXh0rsjA&s=09"
+            target="_blank"
+            ><img
+              src="{% static 'images/twitter.png' %}"
+              alt="oops!"
+              style="width: 35px"
+            />
+          </a>
+        </div>
+      </div>
+
+      <!--Our Blends -->
+      <div class="foot-col">
+        <div class="head_fst"><h3>Our Blends</h3></div>
+        <div id="menu">
+          <ul>
+            <li>Aathirasam</li>
+            <li>Special Sesame Aathirasam</li>
+            <li>Mullu Murukku</li>
+            <li>Hand-woven Murukku</li>
+            <li>Butter Murukku</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="foot-col">
+        <div class="h_sec"><h3>Contact Us</h3></div>
+        <div class="contact">
+          33A Manickavasagar Street <br />
+          Aarumuganagar, Kalugumalai-628552 <br />
+          +93844 158922 <br />
+          sathyashop@gmail.com <br />
+          Mon-Sat: 8am - 10pm
+        </div>
+        <div class="all_ic">
+          <i class="fa-solid fa-location-dot"></i>
+          <i class="one fa-solid fa-phone"></i>
+          <i class="one fa-solid fa-envelope"></i>
+          <i class="one fa-solid fa-clock"></i>
+        </div>
+        <div class="copyright">
+          <small
+            >© <span id="year"></span>2001 Sweet Savory — All rights
+            reserved</small
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

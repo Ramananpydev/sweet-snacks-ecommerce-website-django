@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+ <aside>
+    <blockquote>
+      My mom used to say, “Before doing anything good, eat something sweet.” 
+    </blockquote>
+  </aside>
+
+  <main>
+  <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <button type="submit">Sign Up</button>
+  </form>
+    <!-- <form method="POST" >
+          {% csrf_token %}
+      <h2><i class="fa-solid fa-user"></i> Sign Up</h2>
+      <label >User name</label>
+      <input type="text"   name="username"  value="" placeholder="Enter your name" required>
+      <label>Email</label>
+      <input type="email"  name="email"  value="" placeholder="Enter your email" required>
+
+      <label>Password</label>
+      <input type="password" name="password"   value="" placeholder="Enter your password" required>
+
+      <label >Re-Password</label>
+      <input type="password" name="re_password"  placeholder="Conform your re_password" required>     
+
+      <label >
+      <input type="checkbox" class="box">
+       <p id="p"> Remember Me</p></label>
+
+       <a href="#">Forgot Password?</a> 
+
+      <button type="submit">Sign Up</button>
+        
+        </form> -->
+      <p>Or continue with</p>
+      <section>
+        <a href="https://www.facebook.com/login/" target="_blank"><i ><img src="{% static 'images/Facebook2.png' %}" alt="oops!"></i></a>
+        <a href="https://accounts.google.com/signin" target="_blank"><i ><img src="{% static 'images/google.png' %}" alt="oops!"></i></a>
+        <a href="https://www.instagram.com/accounts/login/" target="_blank" ><i ><img src="{% static 'images/Instagram.png' %}" alt="oops!"></i></a>
+      </section>
+    
+  </main>
+</body>
+</html>
